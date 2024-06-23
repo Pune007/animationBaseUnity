@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerVFX : VFXPlayer
+{
+
+    private bool isGrounded
+    private void Update()
+    {
+        float xInput = Input.GetAxisRaw("Horizontal");
+
+        if (isGrounded)
+        {
+            if (xInput != 0)
+                SetState("Move");
+            else if (xInput == 0)
+                SetState("Idle");
+        }
+        else
+        {
+            if (CurrentState != "Jump")
+                SetState("Fall");
+        }
+
+        if (xInput > 0f)
+        {
+            sprite.flipX = false;
+        }
+        else if (xInput < 0f)
+        {
+            sprite.flipX = true;
+        }
+    }
+}
